@@ -16,7 +16,11 @@
           {{todo.value*100/todo.number}}%
           <button v-if="todo.value < todo.number"
               @click="todo.value++;saveTodo()">
-            PLUS
+            +
+          </button>
+          <button v-if="todo.value != 0"
+              @click="todo.value--;saveTodo()">
+            -
           </button>
         </li>
       </ul>
