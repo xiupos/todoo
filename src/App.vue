@@ -1,11 +1,12 @@
 <template>
   <section>
+    <h1>TODOO</h1>
     <div class="todoFormBox">
       <input type="text"
         v-model="newTodoLabel">
       <input type="number"
         v-model="newTodoNumber">
-      <button v-on:click="makeTodo">TODOO</button>
+      <button v-on:click="makeTodo">LIST</button>
     </div>
     <div class="todoListBox">
       <ul>
@@ -14,11 +15,11 @@
           "{{todo.label}}" 
           {{todo.value}} / {{todo.number}},
           {{todo.value*100/todo.number}}%
-          <button v-if="todo.value < todo.number"
+          <button v-bind:class="{ disable: !(todo.value < todo.number)}"
               @click="todo.value++;saveTodo()">
             +
           </button>
-          <button v-if="todo.value != 0"
+          <button v-bind:class="{ disable: todo.value == 0}"
               @click="todo.value--;saveTodo()">
             -
           </button>
@@ -75,4 +76,7 @@ export default {
 
 <style>
 .done { text-decoration: line-through; }
+.disable {
+  pointer-events: none;
+}
 </style>
