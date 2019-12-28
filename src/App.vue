@@ -14,7 +14,7 @@
             v-bind:class="{ done: !(todo.value < todo.number)}">
           "{{todo.label}}" 
           {{todo.value}} / {{todo.number}},
-          {{todo.value*100/todo.number}}%
+          {{Math.round(todo.value*100/todo.number * 10) /10 }}%
           <button v-bind:class="{ disable: !(todo.value < todo.number)}"
               @click="todo.value++;saveTodo()">
             +
@@ -40,7 +40,8 @@ export default {
   data: function () {
     return  {
       todos: [],
-      newTodoLabel: ""
+      newTodoLabel:   "",
+      newTodoNumber:  ""
     }
   },
   methods: {
@@ -53,6 +54,7 @@ export default {
           check:  false
         });
       this.newTodoLabel = "";
+      this.newTodoNumber = "";
       this.saveTodo();
     },
     deleteDoneTodo: function(){
