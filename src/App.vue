@@ -51,6 +51,7 @@ export default {
           number: this.newTodoNumber>1?this.newTodoNumber:1,
           check:  false
         });
+      this.newTodoLabel = "";
       this.saveTodo();
     },
     deleteDoneTodo: function(){
