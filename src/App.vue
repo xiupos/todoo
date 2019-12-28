@@ -15,7 +15,7 @@
           {{todo.value}} / {{todo.number}},
           {{todo.value*100/todo.number}}%
           <button v-if="todo.value < todo.number"
-              @click="todo.value++">
+              @click="todo.value++;saveTodo()">
             PLUS
           </button>
         </li>
@@ -29,6 +29,9 @@
 
 <script>
 export default {
+  mounted: function(){
+    this.loadTodo();
+  },
   data: function () {
     return  {
       todos: [],
@@ -44,11 +47,22 @@ export default {
           number: this.newTodoNumber>1?this.newTodoNumber:1,
           check:  false
         });
+      this.saveTodo();
     },
     deleteDoneTodo: function(){
       this.todos = this.todos.filter(function (todo) {
         return todo.value < todo.number;
       });
+      this.saveTodo();
+    },
+    saveTodo: function(){
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    },
+    loadTodo: function(){
+      this.todos = JSON.parse( localStorage.getItem('todos') );
+      if( !this.todos ){
+        this.todos = [];
+      }
     },
   }
 }
