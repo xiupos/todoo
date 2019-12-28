@@ -9,14 +9,20 @@
     </div>
     <div class="todoListBox">
       <ul>
-        <li v-for="(todo, key) in todos" :key="key">
-           "{{todo.label}}" 
+        <li v-for="(todo, key) in todos" :key="key"
+            v-bind:class="{ done: !(todo.value < todo.number)}">
+          "{{todo.label}}" 
           {{todo.value}} / {{todo.number}},
-          {{todo.value*100/todo.number}}% 
+          {{todo.value*100/todo.number}}%
           <button v-if="todo.value < todo.number"
-              @click="todo.value++">PLUS</button>
+              @click="todo.value++">
+            PLUS
+          </button>
         </li>
       </ul>
+    </div>
+    <div class="configBox">
+      <button v-on:click="deleteDoneTodo">Delete done todoos</button>
     </div>
   </section>
 </template>
@@ -38,10 +44,16 @@ export default {
           number: this.newTodoNumber>1?this.newTodoNumber:1,
           check:  false
         });
-    }
+    },
+    deleteDoneTodo: function(){
+      this.todos = this.todos.filter(function (todo) {
+        return todo.value < todo.number;
+      });
+    },
   }
 }
 </script>
 
 <style>
+.done { text-decoration: line-through; }
 </style>
