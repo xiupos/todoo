@@ -6,7 +6,10 @@
           v-model="newTodoLabel">
       <input type="number"
           v-model="newTodoNumber">
-      <button v-on:click="makeTodo">LIST</button>
+      <button v-on:click="makeTodo"
+          v-bind:class="{ disable: !newTodoLabel}">
+        LIST
+      </button>
     </div>
     <div class="todoListBox">
       <ul>
@@ -97,11 +100,12 @@ h1 {
   text-align: center;
 }
 button {
-  background-color: #fff;
-  border: 1px solid #888;
+  background-color: #555;
+  color: #fff;
+  border: none;
 }
 button:hover {
-  background-color: #eee;
+  background-color: #333;
 }
 input {
   background-color: #fff;
@@ -148,6 +152,7 @@ input {
   padding: 0;
 }
 .todoListBox li {
+  background-color: #fafafa;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -157,7 +162,10 @@ input {
          flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding: 5px 0;
+  -webkit-box-pack: end;
+     -ms-flex-pack: end;
+   justify-content: flex-end;
+  margin: 5px 0;
 }
 .todoListBox div,
 .todoListBox button {
@@ -172,6 +180,7 @@ input {
    -webkit-box-flex: 1;
   -ms-flex-positive: 1;
           flex-grow: 1;
+  padding-left: 10px;
 }
 .todoListBox div.value,
 .todoListBox div.numb {
@@ -205,9 +214,12 @@ input {
 }
 .configBox button {
   font-size: 15px;
-  height: 30px;
+  padding: 10px;
   text-transform: uppercase;
 }
-.done { color: #ccc; }
-.disable {  pointer-events: none;}
+.done { color: #888; }
+.disable {
+  pointer-events: none;
+  background: #888;
+}
 </style>
