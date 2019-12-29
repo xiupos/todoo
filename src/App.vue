@@ -13,22 +13,22 @@
     </div>
     <div class="todoListBox">
       <ul>
-        <li v-for="(todo, key) in todos" :key="key">          
-          <div class="label"
-              v-bind:class="{ done: !(todo.value < todo.number)}">
-            {{todo.label}}
-          </div>
-          <div class="value"
-              v-bind:class="{ done: !(todo.value < todo.number)}">
-            {{todo.value}}
-          </div>
-          <div class="numb"
-              v-bind:class="{ done: !(todo.value < todo.number)}">
-            {{todo.number}}
-          </div>
-          <div class="prob"
-              v-bind:class="{ done: !(todo.value < todo.number)}">
-            {{Math.round(todo.value*100/todo.number * 10) /10 }}%
+        <li v-for="(todo, key) in todos" :key="key">
+          <div class="bar">
+            <div class="prog"
+                v-bind:style="{width: todo.value*100/todo.number + '%'}"></div>
+            <div class="label"
+                v-bind:class="{ done: !(todo.value < todo.number)}">
+              {{todo.label}}
+            </div>
+            <div class="value"
+                v-bind:class="{ done: !(todo.value < todo.number)}">
+              {{todo.value}}
+            </div>
+            <div class="numb"
+                v-bind:class="{ done: !(todo.value < todo.number)}">
+              {{todo.number}}
+            </div>
           </div>
           <button v-bind:class="{ disable: !(todo.value < todo.number)}"
               @click="todo.value++;saveTodo()">
@@ -92,11 +92,19 @@ export default {
 </script>
 
 <style>
+*:focus {
+  outline: 0;
+}
 section {
   margin: 0 auto;
   max-width: 400px;
+  font-family: 'Lato', 'Noto Sans JP', '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 h1 {
+  color: #333;
+  font-size: 40px;
+  font-weight: normal;
+  margin: 20px 0;
   text-align: center;
 }
 button {
@@ -154,7 +162,6 @@ input {
   padding: 0;
 }
 .todoListBox li {
-  background-color: #fafafa;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -178,6 +185,33 @@ input {
   font-size: 15px;
   line-height: 40px;
 }
+.todoListBox div.bar {
+  background-color: #fafafa;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+     -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+     -ms-flex-direction: row;
+         flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: end;
+     -ms-flex-pack: end;
+   justify-content: flex-end;
+   -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+          flex-grow: 1;
+  position: relative;
+  z-index: -2;
+}
+.todoListBox div.prog {
+  background-color: #ddd;
+  position: absolute;
+  width: 0;
+  left: 0;
+  z-index: -1;
+}
 .todoListBox div.label {
    -webkit-box-flex: 1;
   -ms-flex-positive: 1;
@@ -186,9 +220,9 @@ input {
 }
 .todoListBox div.value,
 .todoListBox div.numb {
-  -ms-flex-preferred-size: 30px;
-               flex-basis: 30px;
-  width: 30px;
+  -ms-flex-preferred-size: 35px;
+               flex-basis: 35px;
+  width: 35px;
 }
 .todoListBox div.value {
   padding-right: 5px;
@@ -197,12 +231,8 @@ input {
 .todoListBox div.numb::before {
   content: "/";
 }
-.todoListBox div.prob {
-  -ms-flex-preferred-size: 50px;
-               flex-basis: 50px;
-  padding-right: 5px;
-  text-align: right;
-  width: 50px;
+.todoListBox div.numb {
+  margin-right: 10px;
 }
 .todoListBox button {
   -ms-flex-preferred-size: 40px;
@@ -222,6 +252,6 @@ input {
 .done { color: #888; }
 .disable {
   pointer-events: none;
-  background: #888;
+  background: #777;
 }
 </style>
