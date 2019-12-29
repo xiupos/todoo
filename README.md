@@ -1,24 +1,37 @@
-# todoo
+# TODOO
 
-## Project setup
-```
-npm install
-```
+## What's this?
+TODOOは，進捗を量で見るTODOリストです．「なにをやるか」ではなく，「どれだけやるか」を重視します．  
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+自分用に作ったので，そこまで作り込んでいません．特に長文にするとレイアウトが崩れやすいです．
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## What's it made of?
+~~ha2zakuraの時間~~ Vue.jsでできています．  
 
-### Lints and fixes files
-```
-npm run lint
-```
+基本的なシステムは[このQiita記事](hhttps://qiita.com/moonglows76/items/358ef3cd1566c38ece3a)をほとんどそのまま使ってます．コピペではないです．  
+Codeはとても読めるものではないと思いますが，主なコードは `/src/App.vue`で見れます．  
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## How to use?
+
+### タスクの作成
+
+1. 左のテキストボックスにタスクの名前をいれます．  
+(ここで長すぎると，レイアウトが崩れます()．短かく，端的に)
+
+1. 中央のテキストボックスにページ数や工程数などの「量」をいれます．  
+(完了するまでタスクは削除できないので，現実的な量にしましょ)
+
+1. 右のボタンをおして作成!
+
+### タスクの完了
+
+1. タスクの右側のボタンで完了数の増減ができます．
+
+### タスクの削除
+
+1. 完了したものだけを一番下のボタンで消せます．
+
+## How to save?
+
+[LocalStorage](https://www.w3schools.com/html/html5_webstorage.asp)を使ってます．  
+なので，他人にTODOOを覗き見られることはありません．
