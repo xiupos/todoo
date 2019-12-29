@@ -135,6 +135,8 @@ input {
           flex-grow: 1;
 }
 .todoFormBox input[type="number"] {
+  border-left: none;
+  border-right: none;
   -ms-flex-preferred-size: 60px;
                flex-basis: 60px;
   width: 60px;
