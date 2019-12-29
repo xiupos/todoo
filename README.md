@@ -1,5 +1,8 @@
 # TODOO
 
+https://ha2zakura.github.io/todoo/
+github.ioから，すぐ使えます．
+
 ## What's this?
 TODOOは，進捗を量で見るTODOリストです．「なにをやるか」ではなく，「どれだけやるか」を重視します．  
 
