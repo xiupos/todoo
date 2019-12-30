@@ -14,6 +14,10 @@
     <div class="todoListBox">
       <ul>
         <li v-for="(todo, key) in todos" :key="key">
+          <button v-bind:class="{ disable: todo.value == 0}"
+              @click="todo.value--;saveTodo()">
+            ー
+          </button>
           <div class="bar">
             <div class="prog"
                 v-bind:style="{width: todo.value*100/todo.number + '%'}"></div>
@@ -33,10 +37,6 @@
           <button v-bind:class="{ disable: !(todo.value < todo.number)}"
               @click="todo.value++;saveTodo()">
             ＋
-          </button>
-          <button v-bind:class="{ disable: todo.value == 0}"
-              @click="todo.value--;saveTodo()">
-            ー
           </button>
         </li>
       </ul>
