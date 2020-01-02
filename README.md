@@ -11,7 +11,7 @@ TODOOは，進捗を量で見るTODOリストです．「なにをやるか」�
 ## What's it made of?
 ~~ha2zakuraの時間~~ Vue.jsでできています．  
 
-基本的なシステムは[このQiita記事](hhttps://qiita.com/moonglows76/items/358ef3cd1566c38ece3a)をほとんどそのまま使ってます．コピペではないです．  
+基本的なシステムは[このQiita記事](https://qiita.com/moonglows76/items/358ef3cd1566c38ece3a)をほとんどそのまま使ってます．コピペではないです．  
 Codeはとても読めるものではないと思いますが，主なコードは `/src/App.vue`で見れます．  
 
 ## How to use?
