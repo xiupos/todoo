@@ -44,6 +44,9 @@
       </ul>
     </div>
     <div class="configBox">
+      <button v-on:click="sortTodo">Sort todoos</button>
+    </div>
+    <div class="configBox">
       <button v-on:click="deleteDoneTodo">Delete done todoos</button>
     </div>
   </section>
@@ -88,6 +91,12 @@ export default {
       if( !this.todos ){
         this.todos = [];
       }
+    },
+    sortTodo: function(){
+      this.todos.sort(function(a, b) {
+        return b.value/b.number - a.value/a.number;
+      })
+      this.saveTodo();
     },
   }
 }
@@ -244,6 +253,7 @@ input {
   text-decoration: none!important;
 }
 .configBox {
+  margin-bottom: 10px;
   text-align: center;
 }
 .configBox button {
