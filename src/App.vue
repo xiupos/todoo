@@ -15,8 +15,7 @@
       <ul>
         <li v-for="(todo, key) in todos" :key="key">
           <button v-bind:class="{ disable: todo.value == 0}"
-              @click="todo.value--;saveTodo()"
-              v-longclick="() => {todo.value--;saveTodo()}">
+              @click="todo.value--;saveTodo()">
             ー
           </button>
           <div class="bar">
@@ -36,8 +35,7 @@
             </div>
           </div>
           <button v-bind:class="{ disable: !(todo.value < todo.number)}"
-              @click="todo.value++;saveTodo()"
-              v-longclick="() => {todo.value++;saveTodo()}">
+              @click="todo.value++;saveTodo()">
             ＋
           </button>
         </li>
