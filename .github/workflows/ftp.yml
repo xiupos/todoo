@@ -1,4 +1,4 @@
-name: github pages
+name: ftp
 
 on:
   push:
@@ -22,8 +22,10 @@ jobs:
           cmd: build
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./dist
-          publish_branch: master
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ./todoo.nombi.info/
