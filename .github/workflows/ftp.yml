@@ -14,12 +14,12 @@ jobs:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Yarn
-        uses: borales/actions-yarn@v2.1.0
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install
 
       - name: Build
-        uses: borales/actions-yarn@v2.1.0
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build
 
