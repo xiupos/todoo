@@ -2,7 +2,7 @@
 
 ![Screenshot](https://cdn-ak.f.st-hatena.com/images/fotolife/h/ha2zakura/20200102/20200102173744.png)
 
-https://todoo.nombi.info/  
+https://todoo.nombi.link/  
 github.ioから，すぐ使えます．
 
 ## What's this?
