@@ -1,12 +1,12 @@
-name: ftp
+name: GitHub Pages
 
 on:
   push:
     branches:
-      - source
+      - source  # Set a branch name to trigger deployment
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -24,11 +24,8 @@ jobs:
           cmd: build
 
       - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@2.0.0
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          LOCAL_DIR: ./dist/
-          REMOTE_DIR: ./
-          ARGS: --delete
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
